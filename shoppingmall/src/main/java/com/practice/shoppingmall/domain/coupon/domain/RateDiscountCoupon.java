@@ -1,6 +1,7 @@
 package com.practice.shoppingmall.domain.coupon.domain;
 
 import com.practice.shoppingmall.domain.coupon.domain.enums.DiscountType;
+import com.practice.shoppingmall.domain.coupon.exception.DiscountOutOfRangeException;
 import com.practice.shoppingmall.domain.coupon.presentation.dto.request.CreateCouponRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,8 +35,8 @@ public class RateDiscountCoupon extends Coupon {
 
     public static RateDiscountCoupon couponBuild(CreateCouponRequest request) {
 
-        if(100 < request.getDiscountAmount())
-            throw new IllegalStateException();
+        if (request.getDiscountAmount() < 0 || 100 <= request.getDiscountAmount())
+            throw DiscountOutOfRangeException.EXCEPTION;
 
         return RateDiscountCoupon.builder()
                 .couponName(request.getCouponName())
