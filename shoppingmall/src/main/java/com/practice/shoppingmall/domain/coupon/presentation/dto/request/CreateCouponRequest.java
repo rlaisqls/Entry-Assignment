@@ -1,6 +1,6 @@
 package com.practice.shoppingmall.domain.coupon.presentation.dto.request;
 
-import com.practice.shoppingmall.domain.coupon.domain.CouponDiscountType;
+import com.practice.shoppingmall.domain.coupon.domain.enums.DiscountType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -17,7 +17,7 @@ public class CreateCouponRequest {
     private String couponName;
 
     @NotNull(message = "discountType는 null을 허용하지 않습니다")
-    private CouponDiscountType discountType;
+    private DiscountType discountType;
 
     @NotNull(message = "discountAmount는 null을 허용하지 않습니다")
     private Integer discountAmount;
