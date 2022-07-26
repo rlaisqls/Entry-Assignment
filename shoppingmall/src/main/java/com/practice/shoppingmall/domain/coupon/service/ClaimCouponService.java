@@ -17,9 +17,7 @@ import java.time.LocalDateTime;
 public class ClaimCouponService {
 
     private final UserFacade userFacade;
-
     private final CouponRepository couponRepository;
-
     private final UserCouponRepository userCouponRepository;
 
     public void execute(Long couponId) {

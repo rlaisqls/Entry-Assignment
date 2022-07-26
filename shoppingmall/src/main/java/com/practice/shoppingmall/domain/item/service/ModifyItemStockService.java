@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class ModifyItemStockService {
 
     private final ItemRepository itemRepository;
-
     private final ItemFacade itemFacade;
 
     @Transactional
