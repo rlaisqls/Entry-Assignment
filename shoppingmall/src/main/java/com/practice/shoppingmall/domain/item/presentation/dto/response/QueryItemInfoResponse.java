@@ -18,6 +18,8 @@ public class QueryItemInfoResponse {
 
     private Boolean isSoldOut;
 
+    private String description;
+
     public static QueryItemInfoResponse of (Item item) {
 
         return QueryItemInfoResponse
@@ -27,6 +29,7 @@ public class QueryItemInfoResponse {
                 .price(item.getPrice())
                 .stock(item.getStock())
                 .isSoldOut(item.getStock() == 0)
+                .description(item.getDescription())
                 .build();
     }
 }

@@ -37,6 +37,9 @@ public class Item {
     @NotNull
     private int stock;
 
+    @NotNull
+    private String description;
+
     public void addStock(int quantity){
         this.stock += quantity;
     }

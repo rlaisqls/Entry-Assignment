@@ -20,4 +20,7 @@ public class CreateItemRequest {
 
     @NotNull(message = "stock은 null을 허용하지 않습니다")
     private int stock;
+
+    @NotNull(message = "description은 null을 허용하지 않습니다")
+    private String description;
 }
