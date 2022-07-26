@@ -1,17 +1,17 @@
 package com.practice.shoppingmall.domain.coupon.domain;
 
-import com.practice.shoppingmall.domain.coupon.exception.InvalidCouponException;
+import com.practice.shoppingmall.domain.coupon.presentation.dto.request.CreateCouponRequest;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,12 +21,13 @@ import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Getter
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Coupon {
+@DiscriminatorColumn(name = "discountType", discriminatorType = DiscriminatorType.STRING)
+@Entity
+public abstract class Coupon {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private final List<UserCoupon> users = new ArrayList<>();
@@ -41,37 +42,23 @@ public class Coupon {
     private String couponName;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(length = 10)
-    private CouponDiscountType discountType;
-
-    @NotNull
-    private int discountAmount;
-
-    @NotNull
     private int validityPeriod;
 
-    public int doDiscount(int totalPrice) {
+    public abstract int doDiscount(int totalPrice);
 
-        switch (this.discountType) {
-            case RATE:
-                return totalPrice - (totalPrice * this.discountAmount / 100);
-            case FIXED:
-                if (totalPrice < this.discountAmount) return 0;
-                else return totalPrice - this.discountAmount;
-            default:
-                throw InvalidCouponException.EXCEPTION;
-        }
-    }
+    public abstract String getDiscountAmount();
 
-    public String getUnit() {
-        switch (this.discountType) {
-            case RATE:
-                return "%";
+    public static Coupon of(CreateCouponRequest request) {
+
+        Coupon coupon;
+        switch (request.getDiscountType()){
             case FIXED:
-                return "원";
+                coupon = FixedDiscountCoupon.couponBuild(request); break;
+            case RATE:
+                coupon = RateDiscountCoupon.couponBuild(request); break;
             default:
-                throw InvalidCouponException.EXCEPTION;
+                throw new IllegalStateException();
         }
+        return coupon;
     }
 }
