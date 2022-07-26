@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.ServletException;
-import java.util.Arrays;
 
 @Slf4j
 @RestControllerAdvice
@@ -33,7 +32,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     public ResponseEntity<ErrorResponse> handleBusinessException(BusinessException e) {
-        Arrays.stream(e.getStackTrace()).forEach(System.out::println);
         ErrorCode errorCode = e.getErrorCode();
         ErrorResponse response = ErrorResponse.of(errorCode, errorCode.getMessage());
         return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatusCode()));
