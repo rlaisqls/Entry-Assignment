@@ -27,8 +27,7 @@ public class AuthCode {
         this.isVerified = false;
     }
 
-    public AuthCode verify() {
+    public void verify() {
         this.isVerified = true;
-        return this;
     }
 }
