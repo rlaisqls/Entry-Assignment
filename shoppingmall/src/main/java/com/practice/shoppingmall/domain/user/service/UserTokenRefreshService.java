@@ -15,9 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserTokenRefreshService {
 
     private final JwtTokenProvider jwtTokenProvider;
-
     private final JwtProperties jwtProperties;
-
     private final RefreshTokenRepository refreshTokenRepository;
 
     @Transactional

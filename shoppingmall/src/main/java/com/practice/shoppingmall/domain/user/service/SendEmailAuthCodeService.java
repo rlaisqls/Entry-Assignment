@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class SendEmailAuthCodeService {
 
     private final UserAuthCodeFacade authCodeFacade;
-
     private final UserRepository userRepository;
 
     @Transactional

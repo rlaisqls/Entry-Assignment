@@ -41,7 +41,6 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleException(Exception e) {
-        Arrays.stream(e.getStackTrace()).forEach(System.out::println);
         ErrorCode errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
         ErrorResponse response = ErrorResponse.of(errorCode, e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -13,10 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class VerifyAuthCodeService {
 
-    private final UserAuthCodeFacade userAuthCodeFacade;
-
     private final AuthCodeRepository authCodeRepository;
-
     private final UserAuthCodeFacade authCodeFacade;
 
     @Transactional

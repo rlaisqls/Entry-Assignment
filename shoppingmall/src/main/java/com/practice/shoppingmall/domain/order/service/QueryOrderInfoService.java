@@ -21,7 +21,6 @@ public class QueryOrderInfoService {
     public QueryOrderInfoResponse execute(Long orderId) {
 
         User user = userFacade.getCurrentUser();
-
         Order order = orderFacade.getOrderById(orderId);
 
         if (order.getUser() != user) throw ForbiddenUserException.EXCEPTION;

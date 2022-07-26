@@ -27,13 +27,9 @@ import java.util.stream.Collectors;
 public class CreateOrderService {
 
     private final UserFacade userFacade;
-
     private final UserCouponFacade userCouponFacade;
-
     private final OrderRepository orderRepository;
-
     private final UserCouponRepository userCouponRepository;
-
     private final ItemRepository itemRepository;
 
     @Transactional

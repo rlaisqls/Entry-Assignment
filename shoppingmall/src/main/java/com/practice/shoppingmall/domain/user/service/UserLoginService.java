@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 public class UserLoginService {
+
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;

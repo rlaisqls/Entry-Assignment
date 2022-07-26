@@ -15,9 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CancelOrderService {
 
     private final UserFacade userFacade;
-
     private final OrderFacade orderFacade;
-
     private final OrderRepository orderRepository;
 
     @Transactional
