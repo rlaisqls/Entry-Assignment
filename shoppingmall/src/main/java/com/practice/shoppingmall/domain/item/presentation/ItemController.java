@@ -5,10 +5,11 @@ import com.practice.shoppingmall.domain.item.presentation.dto.request.CreateItem
 import com.practice.shoppingmall.domain.item.presentation.dto.request.ModifyItemRequest;
 import com.practice.shoppingmall.domain.item.presentation.dto.response.CreateItemResponse;
 import com.practice.shoppingmall.domain.item.presentation.dto.response.QueryItemInfoResponse;
-import com.practice.shoppingmall.domain.item.service.ModifyItemStockService;
+import com.practice.shoppingmall.domain.item.presentation.dto.response.QueryItemResponse;
 import com.practice.shoppingmall.domain.item.service.CreateItemService;
 import com.practice.shoppingmall.domain.item.service.DeleteItemService;
 import com.practice.shoppingmall.domain.item.service.ModifyItemService;
+import com.practice.shoppingmall.domain.item.service.ModifyItemStockService;
 import com.practice.shoppingmall.domain.item.service.QueryItemInfoService;
 import com.practice.shoppingmall.domain.item.service.QueryItemListService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -66,9 +68,8 @@ public class ItemController {
         deleteItemService.execute(itemId);
     }
 
-
     @GetMapping
-    public QueryItemListResponse queryItemList(){
+    public List<QueryItemResponse> queryItemList(){
         return queryItemListService.execute();
     }
 
