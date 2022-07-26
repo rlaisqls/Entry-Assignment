@@ -1,6 +1,5 @@
 package com.practice.shoppingmall.domain.order.service;
 
-import com.practice.shoppingmall.domain.order.domain.Order;
 import com.practice.shoppingmall.domain.order.domain.repository.OrderRepository;
 import com.practice.shoppingmall.domain.order.presentation.dto.response.QueryOrderResponse;
 import com.practice.shoppingmall.domain.user.domain.User;
@@ -23,9 +22,7 @@ public class QueryOrderListService {
 
         User user = userFacade.getCurrentUser();
 
-        List<Order> orderList = orderRepository.findByUser(user);
-
-        return orderList
+        return orderRepository.findByUser(user)
                 .stream()
                 .map(QueryOrderResponse::of)
                 .collect(Collectors.toList());
