@@ -2,7 +2,7 @@ package com.practice.shoppingmall.domain.coupon.service;
 
 import com.practice.shoppingmall.domain.coupon.domain.repository.UserCouponRepository;
 import com.practice.shoppingmall.domain.coupon.facade.UserCouponFacade;
-import com.practice.shoppingmall.domain.coupon.presentation.dto.response.QueryCouponResponse;
+import com.practice.shoppingmall.domain.coupon.presentation.dto.response.QueryUserCouponResponse;
 import com.practice.shoppingmall.domain.user.domain.User;
 import com.practice.shoppingmall.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -16,19 +16,17 @@ import java.util.stream.Collectors;
 public class QueryMyCouponListService {
 
     private final UserFacade userFacade;
-
     private final UserCouponFacade userCouponFacade;
-
     private final UserCouponRepository userCouponRepository;
 
-    public List<QueryCouponResponse> execute() {
+    public List<QueryUserCouponResponse> execute() {
 
         User user = userFacade.getCurrentUser();
 
         return userCouponRepository.findByUser(user)
                 .stream()
                 .filter(userCouponFacade::validateCoupon)
-                .map(QueryCouponResponse::of)
+                .map(QueryUserCouponResponse::of)
                 .collect(Collectors.toList());
     }
 }
