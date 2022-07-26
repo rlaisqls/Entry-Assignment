@@ -1,7 +1,7 @@
 package com.practice.shoppingmall.domain.coupon.presentation.dto.response;
 
 import com.practice.shoppingmall.domain.coupon.domain.Coupon;
-import com.practice.shoppingmall.domain.coupon.domain.CouponDiscountType;
+import com.practice.shoppingmall.domain.coupon.domain.enums.DiscountType;
 import com.practice.shoppingmall.domain.coupon.domain.UserCoupon;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,27 +10,26 @@ import java.time.LocalDateTime;
 
 @Getter
 @Builder
-public class QueryCouponResponse {
+public class QueryUserCouponResponse {
     private Long couponId;
 
     private String couponName;
 
-    private CouponDiscountType discountType;
+    private DiscountType discountType;
 
     private String discountAmount;
 
     private LocalDateTime expirationDateTime;
 
-    public static QueryCouponResponse of(UserCoupon userCoupon) {
+    public static QueryUserCouponResponse of(UserCoupon userCoupon) {
 
         Coupon coupon = userCoupon.getCoupon();
 
-        return QueryCouponResponse
+        return QueryUserCouponResponse
                 .builder()
                 .couponId(userCoupon.getId())
                 .couponName(coupon.getCouponName())
-                .discountType(coupon.getDiscountType())
-                .discountAmount(coupon.getDiscountAmount() + coupon.getUnit())
+                .discountAmount(coupon.getDiscountAmount())
                 .expirationDateTime(userCoupon.getExpirationDateTime())
                 .build();
     }
