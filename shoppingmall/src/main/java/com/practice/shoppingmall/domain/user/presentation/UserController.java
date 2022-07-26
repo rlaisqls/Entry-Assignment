@@ -53,13 +53,13 @@ public class UserController {
     private final QueryUserInfoService queryUserInfoService;
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/mail/verify")
+    @PostMapping("/mail")
     public void sendEmailAuthCode(@Valid @RequestBody SendMailRequest request){
         sendEmailAuthCodeService.execute(request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping("/mail/verify")
+    @PutMapping("/mail")
     public void verifyAuthCode(@Valid @RequestBody VerifyAuthCodeRequest request) {
         verifyAuthCodeService.execute(request);
     }
