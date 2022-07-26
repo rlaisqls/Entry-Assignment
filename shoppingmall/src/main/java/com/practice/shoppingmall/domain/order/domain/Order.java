@@ -2,7 +2,8 @@ package com.practice.shoppingmall.domain.order.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.practice.shoppingmall.domain.delivery.domain.Delivery;
-import com.practice.shoppingmall.domain.delivery.domain.DeliveryStatus;
+import com.practice.shoppingmall.domain.delivery.domain.enums.DeliveryStatus;
+import com.practice.shoppingmall.domain.order.domain.enums.OrderStatus;
 import com.practice.shoppingmall.domain.order.exception.AlreadyDeliveredException;
 import com.practice.shoppingmall.domain.user.domain.User;
 import lombok.AccessLevel;

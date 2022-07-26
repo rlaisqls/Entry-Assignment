@@ -1,5 +1,6 @@
 package com.practice.shoppingmall.domain.delivery.domain;
 
+import com.practice.shoppingmall.domain.delivery.domain.enums.DeliveryStatus;
 import com.practice.shoppingmall.domain.order.domain.Order;
 import com.practice.shoppingmall.domain.user.domain.User;
 import lombok.AccessLevel;
@@ -44,6 +45,7 @@ public class Delivery {
     private DeliveryStatus deliveryStatus;
 
     public static Delivery start(User user){
+
         return Delivery
                 .builder()
                 .address(user.getAddress())

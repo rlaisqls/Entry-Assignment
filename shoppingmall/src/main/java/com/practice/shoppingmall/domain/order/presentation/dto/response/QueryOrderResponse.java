@@ -2,7 +2,7 @@ package com.practice.shoppingmall.domain.order.presentation.dto.response;
 
 import com.practice.shoppingmall.domain.order.domain.Order;
 import com.practice.shoppingmall.domain.order.domain.OrderItem;
-import com.practice.shoppingmall.domain.order.domain.OrderStatus;
+import com.practice.shoppingmall.domain.order.domain.enums.OrderStatus;
 import lombok.Builder;
 import lombok.Getter;
 

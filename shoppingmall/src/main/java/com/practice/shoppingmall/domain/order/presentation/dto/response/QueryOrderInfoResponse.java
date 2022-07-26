@@ -4,7 +4,7 @@ import com.practice.shoppingmall.domain.delivery.domain.Delivery;
 import com.practice.shoppingmall.domain.item.domain.Item;
 import com.practice.shoppingmall.domain.order.domain.Order;
 import com.practice.shoppingmall.domain.order.domain.OrderItem;
-import com.practice.shoppingmall.domain.order.domain.OrderStatus;
+import com.practice.shoppingmall.domain.order.domain.enums.OrderStatus;
 import lombok.Builder;
 import lombok.Getter;
 
